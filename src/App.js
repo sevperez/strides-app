@@ -78,6 +78,7 @@ class App extends Component {
           />
           <MyRuns
             currentUser={this.state.currentUser}
+            db={this.state.db}
           />
         </div>
       );

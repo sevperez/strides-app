@@ -68,7 +68,7 @@ class Login extends Component {
           href="#"
           className="float-left text-info"
           onClick={this.triggerGoogleSignin}
-        >Log In with Google</a>
+        >Log in with Google</a>
         <a
           href="#"
           className="float-right text-info"
