@@ -1,0 +1,26 @@
+nav {
+  background-color: #33A99F;
+}
+
+nav img {
+  height: 40px;
+}
+
+nav .navbar-text {
+  line-height: 1;
+}
+
+#logout {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  color: #67081F;
+}
+
+dd p {
+  line-height: 1;
+}
+
+.w-47-6 {
+  width: 47.6%;
+}

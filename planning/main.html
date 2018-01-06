@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Strides</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous" />
+    <link rel="stylesheet" href="application.css" />
+    <link rel="shortcut icon" href="images/shoe.ico" type="image/x-icon">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light mb-4">
+      <a class="navbar-brand p-0" href="#"><img src="images/shoe_logo_small.png" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">My Runs <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+        </ul>
+        <div class="navbar-text p-0">
+          <p class="m-0"><small>Signed in as: sperez</small></p>
+          <p class="m-0"><small><a href="#" id="logout">Sign Out</a></small></p>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="row">
+          <h2 class="mx-auto pb-2">My Runs</h2>
+        </div>
+        <div class="row border border-top-0 border-right-0 border-left-0 p-3 pb-4 mb-3">
+          <h3>Vitals</h3>
+          <div class="container">
+            <div class="row">
+              <div class="col-3">
+                <dl>
+                  <dt>Total Distance:</dt>
+                  <dd>
+                    <p class="mb-0">58.6 miles</p>
+                    <p class="mb-0 text-secondary"><small>Since January 1, 2018</small></p>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-3">
+                <dl>
+                  <dt>Total Time:</dt>
+                  <dd>
+                    <p class="mb-0">32 hrs 18 min 45 sec</p>
+                    <p class="mb-0 text-secondary"><small>Since January 1, 2018</small></p>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-3">
+                <dl>
+                  <dt>Longest Run:</dt>
+                  <dd>
+                    <p class="mb-0">4.6 miles</p>
+                    <p class="mb-0 text-secondary"><small>January 15, 2018</small></p>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-3">
+                <dl>
+                  <dt>Record Pace:</dt>
+                  <dd>
+                    <p class="mb-0">7:35 min/mile</p>
+                    <p class="mb-0 text-secondary"><small>February 18, 2018</small></p>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row border border-top-0 border-right-0 border-left-0 p-3 pb-4 mb-3">
+          <h3>New Run</h3>
+          <a href="#newRun" data-toggle="collapse" role="button" class="pt-1 pl-3 text-info"><small>toggle</small></a>
+          <form class="col-12 collapse" id="newRun">
+            <div class="form-row">
+              <div class="form-group col-4">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" />
+              </div>
+              <div class="form-group col-4">
+                <label for="distance">Distance <small>(miles)</small></label>
+                <input type="number" class="form-control" id="distance" placeholder="miles" min="0" />
+              </div>
+              <div class="form-group col-4">
+                <label for="minutes" class="d-block">Time</label>
+                <input type="number" class="form-control d-inline-block w-47-6" id="minutes" placeholder="minutes" min="0" /> : 
+                <input type="number" class="form-control d-inline-block w-47-6" id="seconds" placeholder="seconds" min="0" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-12">
+                <label for="notes">Notes</label>
+                <textarea class="form-control" id="notes" rows="3"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-info">Reset</button>
+          </form>
+        </div>
+        <div class="row border border-top-0 border-right-0 border-left-0 p-3 pb-4 mb-3">
+          <h3>Run List</h3>
+          <table class="table table-hover table-sm">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Day</th>
+                <th scope="col">Time <small class="text-secondary">(min)</small></th>
+                <th scope="col">Distance <small class="text-secondary">(miles)</small></th>
+                <th scope="col">Pace <small class="text-secondary">(min/mile)</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>1 Jan 18</td>
+                <td>Mon</td>
+                <td>23:39</td>
+                <td>3.08</td>
+                <td>7:41</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>3 Jan 18</td>
+                <td>Wed</td>
+                <td>23:58</td>
+                <td>3.08</td>
+                <td>7:47</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>5 Jan 18</td>
+                <td>Fri</td>
+                <td>29:47</td>
+                <td>3.4</td>
+                <td>8:46</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  </body>
+</html>
