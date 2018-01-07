@@ -8,7 +8,7 @@ const MyVitals = (props) => {
         <h3>Vitals</h3>
         <div className="container">
           <div className="row">
-            <p>Loading...</p>
+            <p>No vitals yet...</p>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ const MyVitals = (props) => {
             <dl>
               <dt>Total Distance:</dt>
               <dd>
-                <p className="mb-0">{totalMiles} miles</p>
+                <p className="mb-0">{totalMiles.toFixed(2)} miles</p>
                 <p className="mb-0 text-secondary"><small>Since {firstRunDate}</small></p>
               </dd>
             </dl>
