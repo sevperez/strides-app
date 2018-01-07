@@ -31,7 +31,7 @@ class MyRuns extends Component {
   render() {
     return (
       <div className="container">
-        <MyVitals />
+        <MyVitals runs={this.state.runs} />
         <NewRunForm handleNewRun={this.handleNewRun} />
         <RunList runs={this.state.runs} />
       </div>

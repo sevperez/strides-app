@@ -52,8 +52,7 @@ class NewRunForm extends Component {
     return (
       <div className="row border border-top-0 border-right-0 border-left-0 p-3 pb-4 mb-3">
         <h3>New Run</h3>
-        <a href="#newRun" data-toggle="collapse" role="button" className="pt-1 pl-3 text-info"><small>toggle</small></a>
-        <form className="col-12 collapse" id="newRun" onSubmit={this.triggerNewRun}>
+        <form className="col-12" id="newRun" onSubmit={this.triggerNewRun}>
           <div className="form-row">
             <div className="form-group col-4">
               <label htmlFor="date">Date</label>
@@ -72,7 +71,7 @@ class NewRunForm extends Component {
           <div className="form-row">
             <div className="form-group col-12">
               <label htmlFor="notes">Notes</label>
-              <textarea onChange={this.handleInputChange} className="form-control" id="notes" name="notes" rows="3"value={this.state.email}></textarea>
+              <textarea onChange={this.handleInputChange} className="form-control" id="notes" name="notes" rows="3"value={this.state.notes}></textarea>
             </div>
           </div>
           <button type="submit" className="btn btn-primary mr-2">Submit</button>
