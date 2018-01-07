@@ -27,7 +27,7 @@ const RunList = (props) => {
   
   const sortedKeys = _.sortBy(Object.keys(props.runs), key => { 
     return new Date(props.runs[key].date);
-  });
+  }).reverse();
   
   const runItems = sortedKeys.map((key) => {
     return <RunItem key={key} runs={props.runs[key]} />}
