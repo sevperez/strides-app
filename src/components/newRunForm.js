@@ -13,15 +13,37 @@ class NewRunForm extends Component {
     
     this.handleInputChange = this.handleInputChange.bind(this);
     this.triggerNewRun = this.triggerNewRun.bind(this);
+    this.resetForm = this.resetForm.bind(this);
   }
   
   handleInputChange(e) {
     const target = e.target;
     const val = target.value;
     const name = target.name;
+    const key = e.keyCode || e.charCode;
     
+    if (key === 8 || key === 46 || this.validateInput(name, val)) {
+      this.setState({
+        [name]: val,
+      });
+    }
+  }
+  
+  validateInput(name, val) {
+    if (name === "distance") {
+      if (/[^0-9.]/.test(val)) return false;
+    }
+    
+    return true;
+  }
+  
+  resetForm() {
     this.setState({
-      [name]: val,
+      date: "",
+      distance: "",
+      minutes: "",
+      seconds: "",
+      notes: ""
     });
   }
   
@@ -37,14 +59,7 @@ class NewRunForm extends Component {
       seconds: Number(seconds) + Number(minutes) * 60,
     };
     
-    this.setState({
-      date: "",
-      distance: "",
-      minutes: "",
-      seconds: "",
-      notes: ""
-    });
-    
+    this.resetForm();
     this.props.handleNewRun(runData);
   }
   
@@ -75,7 +90,7 @@ class NewRunForm extends Component {
             </div>
           </div>
           <button type="submit" className="btn btn-primary mr-2">Submit</button>
-          <button type="reset" className="btn btn-info">Reset</button>
+          <button type="reset" className="btn btn-info" onClick={this.resetForm}>Reset</button>
         </form>
       </div>
     );

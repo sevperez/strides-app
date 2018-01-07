@@ -16,6 +16,7 @@ const RunList = (props) => {
               <th scope="col">Time <small className="text-secondary">(min)</small></th>
               <th scope="col">Distance <small className="text-secondary">(miles)</small></th>
               <th scope="col">Pace <small className="text-secondary">(min/mile)</small></th>
+              <th scope="col"></th>
             </tr>
           </thead>
         </table>
