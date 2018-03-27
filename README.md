@@ -8,7 +8,7 @@ A version of this application is deployed on Google Firebase at the below link. 
 
 [Strides](https://strides-app.firebaseapp.com/)
 
-#### Stac
+#### Stack
 
 - Frontend Library: React
 - Persistence Layer: Google Firebase
