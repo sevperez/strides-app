@@ -1,3 +1,4 @@
+import "./polyfills";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -5,7 +6,10 @@ import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 import * as firebase from "firebase";
 
-// initialize firebase
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+
+// Initialize firebase
 const config = {
   apiKey: "AIzaSyDU23_P14_dRi6C9sGiadwtqcJ_EcJOXg0",
   authDomain: "strides-app.firebaseapp.com",
@@ -16,5 +20,9 @@ const config = {
 };
 firebase.initializeApp(config);
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const store = createStore(rootReducer);
+ReactDOM.render(
+  <App runs={store.getState().runs} />,
+  document.getElementById("root")
+);
 registerServiceWorker();
