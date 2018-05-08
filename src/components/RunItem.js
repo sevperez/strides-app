@@ -4,19 +4,16 @@ import { getDateInfo, secondsToTimeString  } from "../helpers";
 
 const RunItem = ({ data }) => {
   const { date, distance, seconds, notes } = data;
+  const paceSeconds = seconds / distance;
   
   return (
-    <li className="list-group-item">
-      <div className="row">
-        <span className="col-3">{getDateInfo(date).dateString}</span>
-        <span className="col-3">{getDateInfo(date).dayString}</span>
-        <span className="col-3">{distance} miles</span>
-        <span className="col-3">{secondsToTimeString(seconds)}</span>
-      </div>
-      <div className="pt-2">
-        <span className="text-secondary">{notes}</span>
-      </div>
-    </li>
+    <tr>
+      <td>{getDateInfo(date).dateString}</td>
+      <td>{getDateInfo(date).dayString}</td>
+      <td>{secondsToTimeString(seconds)}</td>
+      <td>{distance.toFixed(2)}</td>
+      <td>{secondsToTimeString(paceSeconds)}</td>
+    </tr>
   );
 };
 

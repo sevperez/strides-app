@@ -4,12 +4,12 @@ import ReactDOM from "react-dom";
 import RunItem from "../RunItem";
 
 it("renders without crashing", () => {
-  const div = document.createElement("div");
+  const tbody = document.createElement("tbody");
   const data = {
     date: new Date("2018-05-05"),
     distance: 2.95,
     seconds: 1800,
     notes: "Getting faster!",
   };
-  ReactDOM.render(<RunItem data={data}/>, div);
+  ReactDOM.render(<RunItem data={data}/>, tbody);
 });

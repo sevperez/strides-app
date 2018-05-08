@@ -16,14 +16,14 @@ export const getDateInfo = (date) => {
 
 export const secondsToTimeString = seconds => {
   if (seconds >= 3600) {
-    const timeHr = String(Math.floor(seconds / 60 / 60)).padStart(2, "0");
+    const timeHr = String(Math.floor(seconds / 60 / 60));
     const timeMin = String(Math.floor(seconds / 60 % 60)).padStart(2, "0");
-    const timeSec = String(seconds % 60).padStart(2, "0");
+    const timeSec = String(Math.floor(seconds % 60)).padStart(2, "0");
     
     return `${timeHr}:${timeMin}:${timeSec}`;
   }
-  const timeMin = String(Math.floor(seconds / 60)).padStart(2, "0");
-  const timeSec = String(seconds % 60).padStart(2, "0");
+  const timeMin = String(Math.floor(seconds / 60));
+  const timeSec = String(Math.floor(seconds % 60)).padStart(2, "0");
   
   return `${timeMin}:${timeSec}`;
 };

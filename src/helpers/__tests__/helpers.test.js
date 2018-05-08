@@ -19,13 +19,7 @@ describe("helpers", () => {
   
   describe("secondsToTimeString", () => {
     describe("time < 1 hr", () => {
-      it("returns an MM:SS string (padded with zeros)", () => {
-        const seconds = 150;
-        const expectedOutput = "02:30";
-        expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
-      });
-      
-      it("returns an MM:SS string (unpadded with zeros)", () => {
+      it("returns an MM:SS string", () => {
         const seconds = 1650;
         const expectedOutput = "27:30";
         expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
@@ -33,15 +27,9 @@ describe("helpers", () => {
     });
     
     describe("time > 1 hr", () => {
-      it("returns an HH:MM:SS string (padded with zeros)", () => {
+      it("returns an HH:MM:SS string", () => {
         const seconds = 4050;
-        const expectedOutput = "01:07:30";
-        expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
-      });
-      
-      it("returns an HH:MM:SS string (unpadded with zeros)", () => {
-        const seconds = 59050;
-        const expectedOutput = "16:24:10";
+        const expectedOutput = "1:07:30";
         expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
       });
     });

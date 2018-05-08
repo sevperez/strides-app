@@ -1,5 +1,5 @@
 import React from "react";
-import RunList from "../containers/RunList";
+import RunTable from "../containers/RunTable";
 import NewRunForm from "../containers/NewRunForm";
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
     <div>
       <h3>My Runs</h3>
       <NewRunForm />
-      <RunList />
+      <RunTable />
     </div>
   );
 };
