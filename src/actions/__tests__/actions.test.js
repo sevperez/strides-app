@@ -19,4 +19,13 @@ describe("actions", () => {
     };
     expect(actions.addRun(id, data)).toEqual(expectedAction);
   });
+  
+  it("should create an action to set the sort attribute", () => {
+    const attribute = "PACE";
+    const expectedAction = {
+      type: types.SET_SORT_ATTRIBUTE,
+      attribute,
+    };
+    expect(actions.setSortAttribute(attribute)).toEqual(expectedAction);
+  });
 });
