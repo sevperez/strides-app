@@ -1,6 +1,6 @@
 import React from "react";
-import RunList from "./RunList";
-import NewRunForm from "./NewRunForm";
+import RunList from "../containers/RunList";
+import NewRunForm from "../containers/NewRunForm";
 
 const App = () => {
   return (

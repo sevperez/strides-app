@@ -1,8 +1,13 @@
 // HELPERS - index.js
 
-export const getDateInfo = date => {
+export const getDateInfo = (date) => {
   const dateOptions = { year: "numeric", month: "long", day: "numeric" };
   const dayOptions = { weekday: "long" };
+  
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+  
   return {
     dateString: date.toLocaleDateString("en-US", dateOptions),
     dayString: date.toLocaleDateString("en-US", dayOptions),

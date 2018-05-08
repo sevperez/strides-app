@@ -1,14 +1,12 @@
 import "./polyfills";
 import React from "react";
-import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/App";
-import registerServiceWorker from "./registerServiceWorker";
 import * as firebase from "firebase";
+import registerServiceWorker from "./registerServiceWorker";
 
-import { createStore } from "redux";
-import rootReducer from "./reducers";
+import "./index.css";
+import Root from "./components/Root";
+import configureStore from "./configureStore";
 
 // Initialize firebase
 const config = {
@@ -21,11 +19,10 @@ const config = {
 };
 firebase.initializeApp(config);
 
-const store = createStore(rootReducer);
+const store = configureStore();
+
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Root store={store} />,
   document.getElementById("root")
 );
 registerServiceWorker();

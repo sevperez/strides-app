@@ -2,10 +2,8 @@
 
 import { ADD_RUN } from "./actionTypes";
 
-export const addRun = (id, data) => {
-  return {
-    type: ADD_RUN,
-    id,
-    data,
-  };
-};
+export const addRun = (id, data) => ({
+  type: ADD_RUN,
+  id,
+  data,
+});

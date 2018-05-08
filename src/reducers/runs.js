@@ -2,27 +2,6 @@
 
 import { ADD_RUN, UPDATE_RUN } from "../actions/actionTypes";
 
-const sampleData = {
-  "user1run1": {
-      date: new Date("2018-05-01"),
-      distance: 2.45,
-      seconds: 1500,
-      notes: "Great run.",
-    },
-    "user1run2": {
-      date: new Date("2018-05-03"),
-      distance: 2.65,
-      seconds: 1600,
-      notes: "Feels good.",
-    },
-    "user1run3": {
-      date: new Date("2018-05-05"),
-      distance: 2.95,
-      seconds: 1800,
-      notes: "Getting faster!",
-    }
-};
-
 const run = (state = {}, action) => {
   switch (action.type) {
     case ADD_RUN:
@@ -34,7 +13,7 @@ const run = (state = {}, action) => {
   }
 };
 
-const runs = (state = sampleData, action) => {
+const runs = (state = {}, action) => {
   switch (action.type) {
     case ADD_RUN:
       return { ...state, [action.id]: run(undefined, action) };

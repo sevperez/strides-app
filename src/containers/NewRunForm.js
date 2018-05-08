@@ -1,15 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { v4 } from "uuid";
 import { addRun } from "../actions";
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onRunSubmit(id, data) {
-      dispatch(addRun(id, data));
-    }
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  onRunSubmit(id, data) {
+    dispatch(addRun(id, data));
+  },
+});
 
 export class NewRunForm extends Component {
   constructor(props) {
@@ -177,3 +176,7 @@ export class NewRunForm extends Component {
 }
 
 export default connect(null, mapDispatchToProps)(NewRunForm);
+
+NewRunForm.propTypes = {
+  onRunSubmit: PropTypes.func,
+};

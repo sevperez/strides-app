@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { getDateInfo, secondsToTimeString  } from "../helpers";
 
 const RunItem = ({ data }) => {
@@ -20,3 +21,12 @@ const RunItem = ({ data }) => {
 };
 
 export default RunItem;
+
+RunItem.propTypes = {
+  data: PropTypes.shape({
+    date: PropTypes.date,
+    distance: PropTypes.number,
+    seconds: PropTypes.number,
+    notes: PropTypes.string,
+  }).isRequired,
+};
