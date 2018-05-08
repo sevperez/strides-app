@@ -1,5 +1,6 @@
 import "./polyfills";
 import React from "react";
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
@@ -22,7 +23,9 @@ firebase.initializeApp(config);
 
 const store = createStore(rootReducer);
 ReactDOM.render(
-  <App runs={store.getState().runs} />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 registerServiceWorker();

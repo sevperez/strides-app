@@ -7,19 +7,19 @@ const sampleData = {
       date: new Date("2018-05-01"),
       distance: 2.45,
       seconds: 1500,
-      notes: "",
+      notes: "Great run.",
     },
     "user1run2": {
       date: new Date("2018-05-03"),
       distance: 2.65,
       seconds: 1600,
-      notes: "",
+      notes: "Feels good.",
     },
     "user1run3": {
       date: new Date("2018-05-05"),
       distance: 2.95,
       seconds: 1800,
-      notes: "",
+      notes: "Getting faster!",
     }
 };
 
