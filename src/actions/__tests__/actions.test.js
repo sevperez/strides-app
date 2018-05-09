@@ -28,4 +28,11 @@ describe("actions", () => {
     };
     expect(actions.setSortAttribute(attribute)).toEqual(expectedAction);
   });
+  
+  it("should create an action to toggle reverse", () => {
+    const expectedAction = {
+      type: types.TOGGLE_REVERSE,
+    };
+    expect(actions.toggleReverse()).toEqual(expectedAction);
+  });
 });

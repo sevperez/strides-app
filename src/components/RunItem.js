@@ -13,6 +13,12 @@ const RunItem = ({ data }) => {
       <td>{secondsToTimeString(seconds)}</td>
       <td>{distance.toFixed(2)}</td>
       <td>{secondsToTimeString(paceSeconds)}</td>
+      <td className="text-center">
+        { notes
+          ? <i className="fa fa-info-circle" aria-hidden="true"></i>
+          : <span></span>
+        }
+      </td>
     </tr>
   );
 };

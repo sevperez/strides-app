@@ -23,5 +23,43 @@ const runs = (state = {}, action) => {
       return state;
   }
 };
-
 export default runs;
+
+export const getSortedRunIds = (runs, sortAttribute) => {
+  sortAttribute = sortAttribute.toLowerCase();
+  
+  const compare = (idA, idB) => {
+    let runA = { ...runs[idA] };
+    let runB = { ...runs[idB] };
+    
+    if (sortAttribute === "pace") {
+      runA.pace = runA.seconds / runA.distance;
+      runB.pace = runB.seconds / runB.distance;
+    }
+    
+    if (sortAttribute === "day") {
+      runA.day = new Date(runA.date).getDay();
+      runB.day = new Date(runB.date).getDay();
+    }
+    
+    if (runA[sortAttribute] === runB[sortAttribute]) {
+      if (runA["date"] > runB["date"]) {
+        return 1;
+      } else if (runA["date"] < runB["date"]) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+    
+    if (runA[sortAttribute] > runB[sortAttribute]) {
+      return 1;
+    } else if (runA[sortAttribute] < runB[sortAttribute]) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
+  
+  return Object.keys(runs).sort(compare);
+};
