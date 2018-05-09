@@ -100,21 +100,21 @@ describe("selectors", () => {
     };
     
     it("sorts IDs by attribute, then by date", () => {
-      const attribute = "DISTANCE";
+      const attribute = "distance";
       const expectedOutput = ["user1run3", "user1run2", "user1run1"];
       
       expect(getSortedRunIds(runs, attribute)).toEqual(expectedOutput);
     });
     
     it("sorts IDs by pace", () => {
-      const attribute = "PACE";
+      const attribute = "pace";
       const expectedOutput = ["user1run2", "user1run3", "user1run1"];
       
       expect(getSortedRunIds(runs, attribute)).toEqual(expectedOutput);
     });
     
     it("returns an empty array if runs.length === 0", () => {
-      const attribute = "DISTANCE";
+      const attribute = "distance";
       expect(getSortedRunIds({}, attribute)).toEqual([]);
     });
   });

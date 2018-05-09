@@ -7,16 +7,16 @@ import { SET_SORT_ATTRIBUTE, TOGGLE_REVERSE } from "../../actions/actionTypes";
 
 describe("sort reducer", () => {
   it("should return the initial state", () => {
-    expect(sort(undefined, {})).toEqual("DATE");
+    expect(sort(undefined, {})).toEqual("date");
   });
   
   it("should handle SET_SORT_ATTRIBUTE", () => {
-    const stateBefore = "PACE";
+    const stateBefore = "pace";
     const action = {
       type: SET_SORT_ATTRIBUTE,
-      attribute: "DISTANCE",
+      attribute: "distance",
     };
-    const stateAfter = "DISTANCE";
+    const stateAfter = "distance";
     
     deepfreeze(stateBefore);
     deepfreeze(stateAfter)

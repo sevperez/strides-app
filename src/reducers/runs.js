@@ -26,7 +26,9 @@ const runs = (state = {}, action) => {
 export default runs;
 
 export const getSortedRunIds = (runs, sortAttribute) => {
-  sortAttribute = sortAttribute.toLowerCase();
+  if (sortAttribute === "time") {
+    sortAttribute = "seconds";
+  }
   
   const compare = (idA, idB) => {
     let runA = { ...runs[idA] };

@@ -1,9 +1,8 @@
 // REDUCERS - sort.js
 
-import { combineReducers } from "redux";
 import { SET_SORT_ATTRIBUTE, TOGGLE_REVERSE } from "../actions/actionTypes";
 
-export const sort = (state = "DATE", action) => {
+export const sort = (state = "date", action) => {
   switch (action.type) {
     case SET_SORT_ATTRIBUTE:
       return action.attribute;

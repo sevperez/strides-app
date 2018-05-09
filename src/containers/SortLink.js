@@ -29,8 +29,9 @@ export const SortLink = (props) => {
   }
   
   return (
-    <a
-      href="#"
+    <button
+      type="button"
+      className="btn btn-link p-0 m-0"
       onClick={(e) => {
           e.preventDefault();
           onSortClick(sort, attribute);
@@ -44,7 +45,7 @@ export const SortLink = (props) => {
           aria-hidden="true">
         </i>
       }
-    </a>
+    </button>
   );
 };
 

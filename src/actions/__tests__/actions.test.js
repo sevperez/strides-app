@@ -21,7 +21,7 @@ describe("actions", () => {
   });
   
   it("should create an action to set the sort attribute", () => {
-    const attribute = "PACE";
+    const attribute = "pace";
     const expectedAction = {
       type: types.SET_SORT_ATTRIBUTE,
       attribute,

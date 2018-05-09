@@ -23,28 +23,28 @@ export const RunTable = ({ runs, sort, sortedRunIds, reverse }) => {
         <tr>
           <th scope="col">
             <SortLink
-              attribute={"DATE"}
+              attribute={"date"}
             >
               <span>Date</span>
             </SortLink>
           </th>
           <th scope="col">
             <SortLink
-              attribute={"DAY"}
+              attribute={"day"}
             >
               <span>Day</span>
             </SortLink>
           </th>
           <th scope="col">
             <SortLink
-              attribute={"SECONDS"}
+              attribute={"time"}
             >
               <span>Time</span>
             </SortLink>
           </th>
           <th scope="col">
             <SortLink
-              attribute={"DISTANCE"}
+              attribute={"distance"}
             >
               <span>Distance</span>
               <small className="text-secondary pl-1">(miles)</small>
@@ -52,7 +52,7 @@ export const RunTable = ({ runs, sort, sortedRunIds, reverse }) => {
           </th>
           <th scope="col">
             <SortLink
-              attribute={"PACE"}
+              attribute={"pace"}
             >
               <span>Pace</span>
               <small className="text-secondary pl-1">(min/mile)</small>
@@ -60,7 +60,7 @@ export const RunTable = ({ runs, sort, sortedRunIds, reverse }) => {
           </th>
           <th scope="col">
             <SortLink
-              attribute={"NOTES"}
+              attribute={"notes"}
             >
               <span>Notes</span>
             </SortLink>
