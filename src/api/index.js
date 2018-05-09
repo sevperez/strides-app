@@ -1,7 +1,5 @@
 // API - index.js
 
-import { uuidv4 } from "uuid/v4";
-
 const fakeDatabase = {
   users: {
     "user1": {
@@ -16,7 +14,7 @@ const fakeDatabase = {
           date: new Date("2018-05-03"),
           distance: 2.65,
           seconds: 1600,
-          notes: "",
+          notes: "some notes!",
         },
         "user1run3": {
           date: new Date("2018-05-05"),
@@ -29,13 +27,15 @@ const fakeDatabase = {
   },
 };
 
-export const fetchRuns = (userId) => {
-  return fakeDatabase.users[userId].runs;
-};
+const delay = (ms) =>
+  new Promise(resolve => setTimeout(resolve, ms));
 
-export const addRun = (userId, run) => {
-  const runId = uuidv4();
-  fakeDatabase.users[userId].runs[runId] = run;
-  return run;
-};
+export const fetchRuns = (userId) =>
+  delay(500).then(() => {
+    if (fakeDatabase.users[userId]) {
+      return fakeDatabase.users[userId].runs;
+    } else {
+      throw new Error(`Unknown userId: ${userId}`);
+    }
+  });
 

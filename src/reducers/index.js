@@ -1,7 +1,7 @@
 // REDUCERS
 
 import { combineReducers } from "redux";
-import runs from "./runs";
+import runs, * as fromRuns from "./runs";
 import { sort, reverse } from "./sort";
 
 const rootReducer = combineReducers({
@@ -11,3 +11,7 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+export const getSortedRunIds = (state, sortAttribute) =>
+  fromRuns.getSortedRunIds(state.runs, sortAttribute);
+

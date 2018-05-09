@@ -35,4 +35,32 @@ describe("actions", () => {
     };
     expect(actions.toggleReverse()).toEqual(expectedAction);
   });
+  
+  it("should create an action to receive runs", () => {
+    const response = {
+      "user1run1": {
+        date: new Date("2018-05-01"),
+        distance: 2.45,
+        seconds: 1500,
+        notes: "",
+      },
+      "user1run2": {
+        date: new Date("2018-05-03"),
+        distance: 2.65,
+        seconds: 1600,
+        notes: "some notes!",
+      },
+      "user1run3": {
+        date: new Date("2018-05-05"),
+        distance: 2.95,
+        seconds: 1800,
+        notes: "",
+      },
+    };
+    const expectedAction = {
+      type: types.RECEIVE_RUNS,
+      response,
+    };
+    expect(actions.receiveRuns(response)).toEqual(expectedAction);
+  });
 });

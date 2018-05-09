@@ -1,20 +1,21 @@
 // configureStore.js
 
-import { createStore } from "redux";
-import { loadState, saveState } from "./localStorage";
+import { createStore, applyMiddleware } from "redux";
+import promise from "redux-promise";
+import { createLogger } from "redux-logger";
 import rootReducer from "./reducers";
 
 const configureStore = () => {
-  const persistedState = loadState();
-  const store = createStore(rootReducer, persistedState);
+  const middlewares = [promise];
   
-  store.subscribe(() => {
-    saveState({
-      runs: store.getState().runs,
-    });
-  });
+  if (process.env.NODE_ENV !== "production") {
+    middlewares.push(createLogger());
+  }
   
-  return store;
+  return createStore(
+    rootReducer,
+    applyMiddleware(...middlewares),
+  );
 };
 
 export default configureStore;

@@ -65,7 +65,7 @@ export class NewRunForm extends Component {
     
     const runId = v4();
     const runData = {
-      date: new Date(date),
+      date: new Date(date).toJSON(),
       distance: Number(distance),
       seconds: Number(seconds) + Number(minutes) * 60,
       notes,

@@ -1,6 +1,6 @@
 // REDUCERS - runs.js
 
-import { ADD_RUN, UPDATE_RUN } from "../actions/actionTypes";
+import { ADD_RUN, UPDATE_RUN, RECEIVE_RUNS } from "../actions/actionTypes";
 
 const run = (state = {}, action) => {
   switch (action.type) {
@@ -15,8 +15,9 @@ const run = (state = {}, action) => {
 
 const runs = (state = {}, action) => {
   switch (action.type) {
+    case RECEIVE_RUNS:
+      return action.response;
     case ADD_RUN:
-      return { ...state, [action.id]: run(undefined, action) };
     case UPDATE_RUN:
       return { ...state, [action.id]: run(state[action.id], action) };
     default:
@@ -25,14 +26,18 @@ const runs = (state = {}, action) => {
 };
 export default runs;
 
-export const getSortedRunIds = (runs, sortAttribute) => {
+export const getSortedRunIds = (state = {}, sortAttribute) => {
   if (sortAttribute === "time") {
     sortAttribute = "seconds";
   }
   
+  if (sortAttribute === "notes") {
+    sortAttribute = "hasNotes";
+  }
+  
   const compare = (idA, idB) => {
-    let runA = { ...runs[idA] };
-    let runB = { ...runs[idB] };
+    let runA = { ...state[idA] };
+    let runB = { ...state[idB] };
     
     if (sortAttribute === "pace") {
       runA.pace = runA.seconds / runA.distance;
@@ -42,6 +47,11 @@ export const getSortedRunIds = (runs, sortAttribute) => {
     if (sortAttribute === "day") {
       runA.day = new Date(runA.date).getDay();
       runB.day = new Date(runB.date).getDay();
+    }
+    
+    if (sortAttribute === "hasNotes") {
+      runA.hasNotes = !!runA.notes;
+      runB.hasNotes = !!runB.notes;
     }
     
     if (runA[sortAttribute] === runB[sortAttribute]) {
@@ -63,5 +73,5 @@ export const getSortedRunIds = (runs, sortAttribute) => {
     }
   };
   
-  return Object.keys(runs).sort(compare);
+  return Object.keys(state).sort(compare);
 };
