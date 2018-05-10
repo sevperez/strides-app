@@ -3,8 +3,9 @@
 import { combineReducers } from "redux";
 import { ADD_RUN,
         UPDATE_RUN,
-        RECEIVE_RUNS,
-        REQUEST_RUNS } from "../actions/actionTypes";
+        FETCH_RUNS_REQUEST,
+        FETCH_RUNS_SUCCESS,
+        FETCH_RUNS_ERROR } from "../actions/actionTypes";
 
 const run = (state = {}, action) => {
   switch (action.type) {
@@ -17,10 +18,10 @@ const run = (state = {}, action) => {
   }
 };
 
-const createRunList = (state = {}, action) => {
+const createRunList = () => {
   const runs = (state = {}, action) => {
     switch (action.type) {
-      case RECEIVE_RUNS:
+      case FETCH_RUNS_SUCCESS:
         return action.response;
       case ADD_RUN:
       case UPDATE_RUN:
@@ -32,10 +33,23 @@ const createRunList = (state = {}, action) => {
   
   const isFetching = (state = false, action) => {
     switch (action.type) {
-      case REQUEST_RUNS:
+      case FETCH_RUNS_REQUEST:
         return true;
-      case RECEIVE_RUNS:
+      case FETCH_RUNS_SUCCESS:
+      case FETCH_RUNS_ERROR:
         return false;
+      default:
+        return state;
+    }
+  };
+  
+  const errorMessage = (state = null, action) => {
+    switch (action.type) {
+      case FETCH_RUNS_ERROR:
+        return action.message;
+      case FETCH_RUNS_REQUEST:
+      case FETCH_RUNS_SUCCESS:
+        return null;
       default:
         return state;
     }
@@ -44,7 +58,8 @@ const createRunList = (state = {}, action) => {
   return combineReducers({
     runs,
     isFetching,
-  })
+    errorMessage,
+  });
 };
 export default createRunList;
 
@@ -99,3 +114,4 @@ export const getSortedRunIds = (state = {}, sortAttribute) => {
 };
 
 export const getIsFetching = (state) => state.isFetching;
+export const getErrorMessage = (state) => state.errorMessage;

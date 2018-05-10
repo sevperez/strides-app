@@ -17,3 +17,6 @@ export const getSortedRunIds = (state, sortAttribute) =>
 
 export const getIsFetching = (state) =>
   fromRuns.getIsFetching(state);
+
+export const getErrorMessage = (state) =>
+  fromRuns.getErrorMessage(state);

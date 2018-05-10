@@ -58,7 +58,7 @@ describe("actions", () => {
       },
     };
     const expectedAction = {
-      type: types.RECEIVE_RUNS,
+      type: types.FETCH_RUNS_SUCCESS,
       response,
     };
     expect(actions.receiveRuns(response)).toEqual(expectedAction);
@@ -66,7 +66,7 @@ describe("actions", () => {
   
   it("should create an action to request runs", () => {
     const expectedAction = {
-      type: types.REQUEST_RUNS,
+      type: types.FETCH_RUNS_REQUEST,
     };
     expect(actions.requestRuns()).toEqual(expectedAction);
   });

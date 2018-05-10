@@ -5,8 +5,8 @@ import deepfreeze from "deepfreeze";
 import reducer, { getSortedRunIds } from "../runs";
 import { ADD_RUN,
          UPDATE_RUN,
-         REQUEST_RUNS,
-         RECEIVE_RUNS } from "../../actions/actionTypes";
+         FETCH_RUNS_REQUEST,
+         FETCH_RUNS_SUCCESS } from "../../actions/actionTypes";
 
 describe("runs reducer", () => {
   it("should return the initial state", () => {
@@ -79,10 +79,10 @@ describe("runs reducer", () => {
   });
   
   describe("set isFetching", () => {
-    it("should set isFetching to true if true and RECEIVE_RUNS", () => {
+    it("should set isFetching to true if true and FETCH_RUNS_SUCCESS", () => {
       const stateBefore = true;
       const action = {
-        type: RECEIVE_RUNS,
+        type: FETCH_RUNS_SUCCESS,
         response: {},
       };
       const stateAfter = false;
@@ -91,9 +91,9 @@ describe("runs reducer", () => {
       ).toEqual(stateAfter);
     });
     
-    it("should set isFetching to true if false and REQUEST_RUNS", () => {
+    it("should set isFetching to true if false and FETCH_RUNS_REQUEST", () => {
       const stateBefore = false;
-      const action = { type: REQUEST_RUNS };
+      const action = { type: FETCH_RUNS_REQUEST };
       const stateAfter = true;
       expect(
         reducer()(stateBefore, action).isFetching

@@ -32,6 +32,10 @@ const delay = (ms) =>
 
 export const fetchRuns = (userId) =>
   delay(500).then(() => {
+    if (Math.random() > 0.5) {
+      throw new Error("Boom!");
+    }
+    
     if (fakeDatabase.users[userId]) {
       return fakeDatabase.users[userId].runs;
     } else {

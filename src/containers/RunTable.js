@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import RunItem from "../components/RunItem";
 import SortLink from "./SortLink";
 import LoadingIndicator from "../components/LoadingIndicator";
-import { getSortedRunIds, getIsFetching } from "../reducers";
+import FetchError from "../components/FetchError";
+import { getSortedRunIds, getIsFetching, getErrorMessage } from "../reducers";
 import * as actions from "../actions";
 
 const mapStateToProps = (state) => ({
@@ -13,6 +14,7 @@ const mapStateToProps = (state) => ({
   reverse: state.reverse,
   sortedRunIds: getSortedRunIds(state.runList, state.sort),
   isFetching: getIsFetching(state.runList),
+  errorMessage: getErrorMessage(state.runList),
 });
 
 export class RunTable extends Component {
@@ -21,21 +23,29 @@ export class RunTable extends Component {
   }
   
   fetchData() {
-    const { fetchRuns, requestRuns } = this.props;
-    requestRuns();
+    const { fetchRuns } = this.props;
     fetchRuns("user1");
   }
   
   render() {
-    const { runs, reverse, isFetching } = this.props;
+    const { runs, reverse, isFetching, errorMessage } = this.props;
     let { sortedRunIds } = this.props;
-    console.log("props: ", this.props);
     if (reverse) {
       sortedRunIds = sortedRunIds.reverse();
     }
     
     if (isFetching && !sortedRunIds.length) {
       return <LoadingIndicator />;
+    }
+    
+    if (errorMessage && !sortedRunIds.length) {
+      console.log("%c errorMessage: ", "color: red", errorMessage);
+      return (
+        <FetchError
+          message={errorMessage}
+          onRetry={() => this.fetchData()}
+        />
+      );
     }
     
     return (
