@@ -1,7 +1,7 @@
 // REDUCERS - runs.js
 
 import { combineReducers } from "redux";
-import { ADD_RUN,
+import { ADD_RUN_SUCCESS,
         UPDATE_RUN,
         FETCH_RUNS_REQUEST,
         FETCH_RUNS_SUCCESS,
@@ -9,10 +9,10 @@ import { ADD_RUN,
 
 const run = (state = {}, action) => {
   switch (action.type) {
-    case ADD_RUN:
-      return action.data;
+    case ADD_RUN_SUCCESS:
+      return action.response.run;
     case UPDATE_RUN:
-      return Object.assign({}, state, action.data);
+      return Object.assign({}, state, action.run);
     default:
       return state;
   }
@@ -23,9 +23,11 @@ const createRunList = () => {
     switch (action.type) {
       case FETCH_RUNS_SUCCESS:
         return action.response;
-      case ADD_RUN:
-      case UPDATE_RUN:
-        return { ...state, [action.id]: run(state[action.id], action) };
+      case ADD_RUN_SUCCESS:
+        return { 
+          ...state,
+          [action.response.runId]: run(state[action.response.runId], action),
+        };
       default:
         return state;
     }

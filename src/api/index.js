@@ -1,5 +1,7 @@
 // API - index.js
 
+import { v4 } from "uuid";
+
 const fakeDatabase = {
   users: {
     "user1": {
@@ -32,10 +34,6 @@ const delay = (ms) =>
 
 export const fetchRuns = (userId) =>
   delay(500).then(() => {
-    if (Math.random() > 0.5) {
-      throw new Error("Boom!");
-    }
-    
     if (fakeDatabase.users[userId]) {
       return fakeDatabase.users[userId].runs;
     } else {
@@ -43,3 +41,12 @@ export const fetchRuns = (userId) =>
     }
   });
 
+export const addRun = (userId, run) =>
+  delay(500).then(() => {
+    const runId = v4();
+    fakeDatabase.users[userId].runs[runId] = run;
+    return { 
+      runId,
+      run,
+    };
+  });

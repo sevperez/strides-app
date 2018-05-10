@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { v4 } from "uuid";
 import { addRun } from "../actions";
 
 const mapDispatchToProps = (dispatch) => ({
-  onRunSubmit(id, data) {
-    dispatch(addRun(id, data));
+  onRunSubmit(userId, run) {
+    dispatch(addRun(userId, run));
   },
 });
 
@@ -63,16 +62,15 @@ export class NewRunForm extends Component {
 
     const {date, distance, minutes, seconds, notes} = this.state;
     
-    const runId = v4();
     const runData = {
-      date: new Date(date).toJSON(),
+      date: new Date(date),
       distance: Number(distance),
       seconds: Number(seconds) + Number(minutes) * 60,
       notes,
     };
     
     this.resetForm();
-    this.props.onRunSubmit(runId, runData);
+    this.props.onRunSubmit("user1", runData);               // TEMP ID
   }
   
   render() {
