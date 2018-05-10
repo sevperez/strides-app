@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LoadingIndicator from "../LoadingIndicator";
+import FetchError from "../FetchError";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(<LoadingIndicator />, div);
+  ReactDOM.render(<FetchError />, div);
 });

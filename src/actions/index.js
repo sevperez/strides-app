@@ -1,13 +1,12 @@
 // ACTION CREATORS - index.js
 
 import * as api from "../api";
-import { ADD_RUN,
-         ADD_RUN_SUCCESS,
-         SET_SORT_ATTRIBUTE,
+import { SET_SORT_ATTRIBUTE,
          TOGGLE_REVERSE,
          FETCH_RUNS_REQUEST,
          FETCH_RUNS_SUCCESS,
-         FETCH_RUNS_ERROR } from "./actionTypes";
+         FETCH_RUNS_ERROR,
+         ADD_RUN_SUCCESS } from "./actionTypes";
 
 export const addRun = (userId, run) => (dispatch) =>
   api.addRun(userId, run).then(response => {

@@ -1,18 +1,15 @@
 // REDUCERS - runs.js
 
 import { combineReducers } from "redux";
-import { ADD_RUN_SUCCESS,
-        UPDATE_RUN,
-        FETCH_RUNS_REQUEST,
-        FETCH_RUNS_SUCCESS,
-        FETCH_RUNS_ERROR } from "../actions/actionTypes";
+import { FETCH_RUNS_REQUEST,
+         FETCH_RUNS_SUCCESS,
+         FETCH_RUNS_ERROR,
+         ADD_RUN_SUCCESS } from "../actions/actionTypes";
 
 const run = (state = {}, action) => {
   switch (action.type) {
     case ADD_RUN_SUCCESS:
       return action.response.run;
-    case UPDATE_RUN:
-      return Object.assign({}, state, action.run);
     default:
       return state;
   }
