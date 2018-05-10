@@ -4,7 +4,8 @@ import * as api from "../api";
 import { ADD_RUN,
          SET_SORT_ATTRIBUTE,
          TOGGLE_REVERSE,
-         RECEIVE_RUNS } from "./actionTypes";
+         RECEIVE_RUNS,
+         REQUEST_RUNS } from "./actionTypes";
 
 export const addRun = (id, data) => ({
   type: ADD_RUN,
@@ -19,6 +20,10 @@ export const setSortAttribute = (attribute) => ({
 
 export const toggleReverse = () => ({
   type: TOGGLE_REVERSE,
+});
+
+export const requestRuns = () => ({
+  type: REQUEST_RUNS,
 });
 
 export const receiveRuns = (response) => ({

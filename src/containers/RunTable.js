@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import RunItem from "../components/RunItem";
 import SortLink from "./SortLink";
-import { getSortedRunIds } from "../reducers";
+import LoadingIndicator from "../components/LoadingIndicator";
+import { getSortedRunIds, getIsFetching } from "../reducers";
 import * as actions from "../actions";
 
 const mapStateToProps = (state) => ({
-  runs: state.runs,
+  runs: state.runList.runs,
   sort: state.sort,
   reverse: state.reverse,
-  sortedRunIds: getSortedRunIds(state, state.sort),
+  sortedRunIds: getSortedRunIds(state.runList, state.sort),
+  isFetching: getIsFetching(state.runList),
 });
 
 export class RunTable extends Component {
@@ -19,20 +21,21 @@ export class RunTable extends Component {
   }
   
   fetchData() {
-    const { fetchRuns } = this.props;
+    const { fetchRuns, requestRuns } = this.props;
+    requestRuns();
     fetchRuns("user1");
   }
   
   render() {
     const { runs, reverse, isFetching } = this.props;
     let { sortedRunIds } = this.props;
-
+    console.log("props: ", this.props);
     if (reverse) {
       sortedRunIds = sortedRunIds.reverse();
     }
     
     if (isFetching && !sortedRunIds.length) {
-      return <p>Loading ... </p>;
+      return <LoadingIndicator />;
     }
     
     return (
@@ -107,5 +110,6 @@ RunTable.propTypes = {
       notes: PropTypes.string,
     })
   ),
+  isFetching: PropTypes.bool,
   sortedRunIds: PropTypes.arrayOf(PropTypes.string),
 };

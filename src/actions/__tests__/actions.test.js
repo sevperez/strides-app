@@ -63,4 +63,11 @@ describe("actions", () => {
     };
     expect(actions.receiveRuns(response)).toEqual(expectedAction);
   });
+  
+  it("should create an action to request runs", () => {
+    const expectedAction = {
+      type: types.REQUEST_RUNS,
+    };
+    expect(actions.requestRuns()).toEqual(expectedAction);
+  });
 });

@@ -1,6 +1,10 @@
 // REDUCERS - runs.js
 
-import { ADD_RUN, UPDATE_RUN, RECEIVE_RUNS } from "../actions/actionTypes";
+import { combineReducers } from "redux";
+import { ADD_RUN,
+        UPDATE_RUN,
+        RECEIVE_RUNS,
+        REQUEST_RUNS } from "../actions/actionTypes";
 
 const run = (state = {}, action) => {
   switch (action.type) {
@@ -13,18 +17,36 @@ const run = (state = {}, action) => {
   }
 };
 
-const runs = (state = {}, action) => {
-  switch (action.type) {
-    case RECEIVE_RUNS:
-      return action.response;
-    case ADD_RUN:
-    case UPDATE_RUN:
-      return { ...state, [action.id]: run(state[action.id], action) };
-    default:
-      return state;
-  }
+const createRunList = (state = {}, action) => {
+  const runs = (state = {}, action) => {
+    switch (action.type) {
+      case RECEIVE_RUNS:
+        return action.response;
+      case ADD_RUN:
+      case UPDATE_RUN:
+        return { ...state, [action.id]: run(state[action.id], action) };
+      default:
+        return state;
+    }
+  };
+  
+  const isFetching = (state = false, action) => {
+    switch (action.type) {
+      case REQUEST_RUNS:
+        return true;
+      case RECEIVE_RUNS:
+        return false;
+      default:
+        return state;
+    }
+  };
+  
+  return combineReducers({
+    runs,
+    isFetching,
+  })
 };
-export default runs;
+export default createRunList;
 
 export const getSortedRunIds = (state = {}, sortAttribute) => {
   if (sortAttribute === "time") {
@@ -75,3 +97,5 @@ export const getSortedRunIds = (state = {}, sortAttribute) => {
   
   return Object.keys(state).sort(compare);
 };
+
+export const getIsFetching = (state) => state.isFetching;

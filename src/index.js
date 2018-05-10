@@ -20,6 +20,7 @@ const config = {
 firebase.initializeApp(config);
 
 const store = configureStore();
+console.log("store: ", store.getState());
 
 ReactDOM.render(
   <Root store={store} />,

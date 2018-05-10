@@ -3,11 +3,14 @@
 import deepfreeze from "deepfreeze";
 
 import reducer, { getSortedRunIds } from "../runs";
-import { ADD_RUN, UPDATE_RUN } from "../../actions/actionTypes";
+import { ADD_RUN,
+         UPDATE_RUN,
+         REQUEST_RUNS,
+         RECEIVE_RUNS } from "../../actions/actionTypes";
 
 describe("runs reducer", () => {
   it("should return the initial state", () => {
-    expect(reducer({}, {})).toEqual({});
+    expect(reducer()({}, {}).runs).toEqual({});
   });
   
   it("should handle ADD_RUN", () => {
@@ -35,7 +38,7 @@ describe("runs reducer", () => {
     deepfreeze(stateAfter);
     
     expect(
-      reducer(stateBefore, action)
+      reducer()(stateBefore, action).runs
     ).toEqual(stateAfter);
   });
   
@@ -71,8 +74,31 @@ describe("runs reducer", () => {
     deepfreeze(stateAfter);
     
     expect(
-      reducer(stateBefore, action)
+      reducer()(stateBefore, action).runs
     ).toEqual(stateAfter);
+  });
+  
+  describe("set isFetching", () => {
+    it("should set isFetching to true if true and RECEIVE_RUNS", () => {
+      const stateBefore = true;
+      const action = {
+        type: RECEIVE_RUNS,
+        response: {},
+      };
+      const stateAfter = false;
+      expect(
+        reducer()(stateBefore, action).isFetching
+      ).toEqual(stateAfter);
+    });
+    
+    it("should set isFetching to true if false and REQUEST_RUNS", () => {
+      const stateBefore = false;
+      const action = { type: REQUEST_RUNS };
+      const stateAfter = true;
+      expect(
+        reducer()(stateBefore, action).isFetching
+      ).toEqual(stateAfter);
+    });
   });
 });
 
