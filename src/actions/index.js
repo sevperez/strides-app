@@ -10,7 +10,6 @@ import { SET_SORT_ATTRIBUTE,
          FETCH_RUNS_SUCCESS,
          FETCH_RUNS_ERROR,
          ADD_RUN_SUCCESS,
-         FETCH_USER_REQUEST,
          FETCH_USER_SUCCESS,
          FETCH_USER_ERROR } from "./actionTypes";
 
@@ -42,7 +41,6 @@ export const receiveRuns = (response) => ({
 
 export const fetchRuns = (userId) => (dispatch) => {
   dispatch(requestRuns());
-
   return api.fetchRuns(userId).then(
     response => {
       dispatch(receiveRuns(response));

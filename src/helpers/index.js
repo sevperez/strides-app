@@ -80,7 +80,7 @@ export const calculateTotalDistance = runs => {
   }
   
   const distances = Object.keys(runs).map(runId => runs[runId].distance);
-  return distances.reduce((acc, val) => acc + val);
+  return distances.reduce((acc, val) => acc + val).toFixed(2);
 };
 
 export const calculateTotalTime = runs => {

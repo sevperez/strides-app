@@ -24,8 +24,10 @@ export class RunTable extends Component {
   }
   
   fetchData() {
-    const { fetchRuns } = this.props;
-    fetchRuns("user1");                           // TEMP ID
+    const { fetchRuns, user } = this.props;
+    if (user.uid) {
+      fetchRuns(user.uid);
+    }
   }
   
   render() {

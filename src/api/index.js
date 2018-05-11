@@ -1,6 +1,7 @@
 // API - index.js
 
 import { v4 } from "uuid";
+import { db } from "../firebase";
 
 const fakeDatabase = {
   users: {
@@ -32,14 +33,29 @@ const fakeDatabase = {
 const delay = (ms) =>
   new Promise(resolve => setTimeout(resolve, ms));
 
-export const fetchRuns = (userId) =>
-  delay(500).then(() => {
-    if (fakeDatabase.users[userId]) {
-      return fakeDatabase.users[userId].runs;
-    } else {
-      throw new Error(`Unknown userId: ${userId}`);
-    }
+export const fetchRuns = (userId) => {
+  return new Promise(resolve => {
+    db.collection("users").doc(userId).collection("runs").get()
+      .then(querySnapshot => {
+        let runs = {};
+        querySnapshot.forEach(doc => runs[doc.ref.id] = doc.data());
+        if (runs) {
+          resolve(runs);
+        } else {
+          throw new Error("Could not retreive runs");
+        }
+      });
   });
+};
+
+// export const fetchRuns = (userId) =>
+//   delay(500).then(() => {
+//     if (fakeDatabase.users[userId]) {
+//       return fakeDatabase.users[userId].runs;
+//     } else {
+//       throw new Error(`Unknown userId: ${userId}`);
+//     }
+//   });
 
 export const addRun = (userId, run) =>
   delay(500).then(() => {
