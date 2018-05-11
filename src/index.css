@@ -28,3 +28,25 @@ nav .navbar-text {
 button.dark-red:hover {
   color: #9a3b56;
 }
+
+.primary-btn-outline {
+  border: 1px solid #33a99f;
+  border-radius: 5px;
+  color: #64172d;
+}
+.primary-btn-outline:hover {
+  background-color: #33a99f;
+  color: #64172d;
+}
+
+.bg-none {
+  background-color: inherit;
+}
+
+.main-header {
+  min-width: 440px;
+}
+
+.logo-banner {
+  width: 370px;
+}

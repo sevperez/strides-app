@@ -9,11 +9,12 @@ import { getSortedRunIds, getIsFetching, getErrorMessage } from "../reducers";
 import * as actions from "../actions";
 
 const mapStateToProps = (state) => ({
+  user: state.userInfo.user,
   runs: state.runList.runs,
   sort: state.sort,
   reverse: state.reverse,
   sortedRunIds: getSortedRunIds(state.runList, state.sort),
-  isFetching: getIsFetching(state.runList),
+  isFetching: getIsFetching(state.runList, "runs"),
   errorMessage: getErrorMessage(state.runList),
 });
 

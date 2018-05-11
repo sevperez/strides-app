@@ -4,6 +4,7 @@ import * as actions from "../";
 import * as types from "../actionTypes";
 
 describe("actions", () => {
+  it("should create an action to get user asynchronously");
   it("should create an an action to add a run asynchronously");
   
   it("should create an action to set the sort attribute", () => {

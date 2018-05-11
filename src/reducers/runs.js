@@ -4,7 +4,8 @@ import { combineReducers } from "redux";
 import { FETCH_RUNS_REQUEST,
          FETCH_RUNS_SUCCESS,
          FETCH_RUNS_ERROR,
-         ADD_RUN_SUCCESS } from "../actions/actionTypes";
+         ADD_RUN_SUCCESS,
+         FETCH_USER_SUCCESS } from "../actions/actionTypes";
 
 const run = (state = {}, action) => {
   switch (action.type) {
@@ -33,6 +34,7 @@ const createRunList = () => {
   const isFetching = (state = false, action) => {
     switch (action.type) {
       case FETCH_RUNS_REQUEST:
+      case FETCH_USER_SUCCESS:
         return true;
       case FETCH_RUNS_SUCCESS:
       case FETCH_RUNS_ERROR:

@@ -6,7 +6,7 @@ import * as helpers from "../helpers";
 
 const mapStateToProps = (state) => ({
   runs: state.runList.runs,
-  isFetching: getIsFetching(state.runList),
+  isFetching: getIsFetching(state.runList, "runs"),
 });
 
 export const Vitals = ({ isFetching, runs }) => {
