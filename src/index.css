@@ -21,3 +21,10 @@ nav img {
 nav .navbar-text {
   line-height: 1;
 }
+
+.dark-red {
+  color: #64172d;
+}
+button.dark-red:hover {
+  color: #9a3b56;
+}

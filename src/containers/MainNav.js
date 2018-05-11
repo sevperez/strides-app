@@ -2,12 +2,17 @@ import React from "react";
 
 export const MainNav = () => (
   <nav className="navbar navbar-expand-lg navbar-light mb-4">
-    <a 
-      className="navbar-brand p-0"
-      href="#"
+    <button 
+      className="btn btn-link navbar-brand p-0"
+      type="button"
     >
-      <img src="/images/shoe_logo_small.png" alt="strides logo" />
-    </a>
+      <img 
+        className="pr-2"
+        src="/images/shoe_logo_small.png"
+        alt="strides logo"
+      />
+      <span>Strides</span>
+    </button>
     <button 
       className="navbar-toggler"
       type="button"
@@ -25,33 +30,28 @@ export const MainNav = () => (
     >
       <ul className="navbar-nav mr-auto">
         <li className="nav-item active">
-          <a
-            className="nav-link"
-            href="#"
+          <button
+            className="btn btn-link nav-link"
+            type="button"
           >
             My Runs <span className="sr-only">(current)</span>
-          </a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Profile</a>
+          </button>
         </li>
       </ul>
       <div className="navbar-text p-0">
         <p className="m-0">
-          <small>Not Signed In</small>
-        </p>
-        <p className="m-0">
           <small>
-            <a 
+            <button
               onClick={(e) => {
                 e.preventDefault();
                 console.log("signing in!");
               }}
-              href="#"
+              type="button"
+              className="btn btn-link nav-link dark-red"
               id="login"
             >
-              Sign In
-            </a>
+              <small>Sign In</small>
+            </button>
           </small>
         </p>
       </div>

@@ -36,23 +36,39 @@ describe("helpers", () => {
       
       expect(dateInfo).toEqual(expectedOutput);
     });
-  })
+  });
   
   describe("secondsToTimeString", () => {
-    describe("time < 1 hr", () => {
-      it("returns an MM:SS string", () => {
-        const seconds = 1650;
-        const expectedOutput = "27:30";
-        expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
-      });
+    it("returns an MM:SS string if time < 1 hr", () => {
+      const seconds = 1650;
+      const expectedOutput = "27:30";
+      expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
     });
     
-    describe("time > 1 hr", () => {
-      it("returns an HH:MM:SS string", () => {
-        const seconds = 4050;
-        const expectedOutput = "1:07:30";
-        expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
-      });
+    it("returns an HH:MM:SS string if time > 1 hr", () => {
+      const seconds = 4050;
+      const expectedOutput = "1:07:30";
+      expect(helpers.secondsToTimeString(seconds)).toEqual(expectedOutput);
+    });
+  });
+  
+  describe("secondsToLongTimeString", () => {
+    it("returns an 'MM min SS sec if time < 1 hr' string", () => {
+      const seconds = 1650;
+      const expectedOutput = "27 min 30 sec";
+      expect(helpers.secondsToLongTimeString(seconds)).toEqual(expectedOutput);
+    });
+    
+    it("returns an 'HH hrs MM min SS sec' string if 1 hr < time < 2 hr", () => {
+      const seconds = 4050;
+      const expectedOutput = "1 hr 7 min 30 sec";
+      expect(helpers.secondsToLongTimeString(seconds)).toEqual(expectedOutput);
+    });
+    
+    it("returns an 'HH hrs MM min SS sec' string if time > 2 hr", () => {
+      const seconds = 8000;
+      const expectedOutput = "2 hrs 13 min 20 sec";
+      expect(helpers.secondsToLongTimeString(seconds)).toEqual(expectedOutput);
     });
   });
   

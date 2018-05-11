@@ -98,7 +98,7 @@ export class NewRunForm extends Component {
           <div className="form-group col-4">
             <label htmlFor="distance">
               <span className="mr-2">Distance</span>
-              <small>(miles)</small>
+              <small className="text-secondary">(miles)</small>
             </label>
             <input
               onChange={this.handleInputChange}

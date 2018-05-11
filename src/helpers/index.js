@@ -30,6 +30,21 @@ export const secondsToTimeString = seconds => {
   return `${timeMin}:${timeSec}`;
 };
 
+export const secondsToLongTimeString = seconds => {
+  if (seconds >= 3600) {
+    const timeHr = String(Math.floor(seconds / 60 / 60));
+    const timeMin = String(Math.floor(seconds / 60 % 60));
+    const timeSec = String(Math.floor(seconds % 60));
+    const hrStr = timeHr > 1 ? "hrs" : "hr";
+    
+    return `${timeHr} ${hrStr} ${timeMin} min ${timeSec} sec`;
+  }
+  const timeMin = String(Math.floor(seconds / 60));
+  const timeSec = String(Math.floor(seconds % 60));
+  
+  return `${timeMin} min ${timeSec} sec`;
+};
+
 export const getStartDate = runs => {
   if (!Object.keys(runs).length) {
     return null;

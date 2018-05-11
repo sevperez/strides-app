@@ -73,7 +73,7 @@ export const Vitals = ({ isFetching, runs }) => {
                   <p 
                     className="mb-0"
                   >
-                    {helpers.secondsToTimeString(totalTime)}
+                    {helpers.secondsToLongTimeString(totalTime)}
                   </p>
                   <p 
                     className="mb-0 text-secondary"
@@ -116,7 +116,7 @@ export const Vitals = ({ isFetching, runs }) => {
                 <dt>Record Pace:</dt>
                 <dd>
                   <p className="mb-0">
-                    {recordPaceStr || ""} min / mile
+                    {recordPaceStr || ""} min/mile
                   </p>
                   <p className="mb-0 text-secondary">
                     <small>{recordPaceDateStr || ""}</small>
