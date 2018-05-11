@@ -6,17 +6,19 @@ import { BrowserRouter as Router,
          Switch } from "react-router-dom";
 
 import App from "./App";
+import MainNav from "../containers/MainNav";
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route exact path="/" render={ () => ( <Redirect to="/my-runs" /> ) }/>
-        <Route exact path="/my-runs/:sort/:reverse" component={App} />
-        <Route exact path="/my-runs/:sort" component={App} />
-        <Route exact path="/my-runs" component={App} />
-      </Switch>
-    </Router>
+    <div>
+      <MainNav />
+      <Router>
+        <Switch>
+          <Route exact path="/" render={ () => ( <Redirect to="/my-runs" /> ) }/>
+          <Route exact path="/my-runs" component={App} />
+        </Switch>
+      </Router>
+    </div>
   </Provider>
 );
 

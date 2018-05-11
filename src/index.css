@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.top-border {
+  border-top: 1px solid #dee2e6;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #dee2e6;
+}
+
+nav {
+  background-color: #33a99f;
+}
+nav img {
+  height: 40px;
+}
+nav .navbar-text {
+  line-height: 1;
+}

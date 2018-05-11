@@ -49,62 +49,65 @@ export class RunTable extends Component {
     }
     
     return (
-      <table className="table table-hover table-sm">
-        <thead className="thead-light">
-          <tr>
-            <th scope="col">
-              <SortLink
-                attribute={"date"}
-              >
-                <span>Date</span>
-              </SortLink>
-            </th>
-            <th scope="col">
-              <SortLink
-                attribute={"day"}
-              >
-                <span>Day</span>
-              </SortLink>
-            </th>
-            <th scope="col">
-              <SortLink
-                attribute={"time"}
-              >
-                <span>Time</span>
-                <small className="text-secondary pl-1">(hh:mm:ss)</small>
-              </SortLink>
-            </th>
-            <th scope="col">
-              <SortLink
-                attribute={"distance"}
-              >
-                <span>Distance</span>
-                <small className="text-secondary pl-1">(miles)</small>
-              </SortLink>
-            </th>
-            <th scope="col">
-              <SortLink
-                attribute={"pace"}
-              >
-                <span>Pace</span>
-                <small className="text-secondary pl-1">(min/mile)</small>
-              </SortLink>
-            </th>
-            <th scope="col">
-              <SortLink
-                attribute={"notes"}
-              >
-                <span>Notes</span>
-              </SortLink>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedRunIds.map(id => (
-            <RunItem key={id} data={runs[id]} />
-          ))}
-        </tbody>
-      </table>
+      <div className="p-3 top-border bottom-border">
+        <h3>My Runs</h3>
+        <table className="table table-hover table-sm">
+          <thead className="thead-light">
+            <tr>
+              <th scope="col">
+                <SortLink
+                  attribute={"date"}
+                >
+                  <span>Date</span>
+                </SortLink>
+              </th>
+              <th scope="col">
+                <SortLink
+                  attribute={"day"}
+                >
+                  <span>Day</span>
+                </SortLink>
+              </th>
+              <th scope="col">
+                <SortLink
+                  attribute={"time"}
+                >
+                  <span>Time</span>
+                  <small className="text-secondary pl-1">(hh:mm:ss)</small>
+                </SortLink>
+              </th>
+              <th scope="col">
+                <SortLink
+                  attribute={"distance"}
+                >
+                  <span>Distance</span>
+                  <small className="text-secondary pl-1">(miles)</small>
+                </SortLink>
+              </th>
+              <th scope="col">
+                <SortLink
+                  attribute={"pace"}
+                >
+                  <span>Pace</span>
+                  <small className="text-secondary pl-1">(min/mile)</small>
+                </SortLink>
+              </th>
+              <th scope="col">
+                <SortLink
+                  attribute={"notes"}
+                >
+                  <span>Notes</span>
+                </SortLink>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedRunIds.map(id => (
+              <RunItem key={id} data={runs[id]} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
