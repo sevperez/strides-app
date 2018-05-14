@@ -1,37 +1,6 @@
 // API - index.js
 
-import { v4 } from "uuid";
 import { db } from "../firebase";
-
-const fakeDatabase = {
-  users: {
-    "user1": {
-      runs: {
-        "user1run1": {
-          date: new Date("2018-05-01"),
-          distance: 2.45,
-          seconds: 1500,
-          notes: "",
-        },
-        "user1run2": {
-          date: new Date("2018-05-03"),
-          distance: 2.65,
-          seconds: 1600,
-          notes: "some notes!",
-        },
-        "user1run3": {
-          date: new Date("2018-05-05"),
-          distance: 2.95,
-          seconds: 1800,
-          notes: "",
-        }
-      }
-    }
-  },
-};
-
-const delay = (ms) =>
-  new Promise(resolve => setTimeout(resolve, ms));
 
 export const fetchRuns = (userId) => {
   return new Promise(resolve => {
@@ -48,12 +17,18 @@ export const fetchRuns = (userId) => {
   });
 };
 
-export const addRun = (userId, run) =>
-  delay(500).then(() => {
-    const runId = v4();
-    fakeDatabase.users[userId].runs[runId] = run;
-    return { 
-      runId,
-      run,
-    };
+export const addRun = (userId, run) => {
+  return new Promise(resolve => {
+    const userRunsRef = db.collection("users").doc(userId).collection("runs");
+    userRunsRef.add(run)
+      .then(docRef => {
+        const runId = docRef.id;
+        
+        if (runId && Object.keys(run).length) {
+          resolve({ runId, run });
+        } else {
+          throw new Error("Could not add run");
+        }
+      });
   });
+};

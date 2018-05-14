@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addRun } from "../actions";
 
+const mapStateToProps = (state) => ({
+  user: state.userInfo.user,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onRunSubmit(userId, run) {
     dispatch(addRun(userId, run));
@@ -70,7 +74,7 @@ export class NewRunForm extends Component {
     };
     
     this.resetForm();
-    this.props.onRunSubmit("user1", runData);               // TEMP ID
+    this.props.onRunSubmit(this.props.user.uid, runData);
   }
   
   render() {
@@ -179,7 +183,7 @@ export class NewRunForm extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewRunForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewRunForm);
 
 NewRunForm.propTypes = {
   onRunSubmit: PropTypes.func,

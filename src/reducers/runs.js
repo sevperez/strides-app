@@ -8,6 +8,7 @@ import { FETCH_RUNS_REQUEST,
          FETCH_USER_SUCCESS } from "../actions/actionTypes";
 
 const run = (state = {}, action) => {
+  console.group("%c action:", "color: green", action);
   switch (action.type) {
     case ADD_RUN_SUCCESS:
       return action.response.run;
