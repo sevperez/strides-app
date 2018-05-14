@@ -3,3 +3,76 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.top-border {
+  border-top: 1px solid #dee2e6;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #dee2e6;
+}
+
+nav {
+  background-color: #33a99f;
+}
+nav img {
+  height: 40px;
+}
+nav .navbar-text {
+  line-height: 1;
+}
+
+.dark-red {
+  color: #64172d;
+}
+button.dark-red:hover {
+  color: #9a3b56;
+}
+
+.primary-btn-outline {
+  border: 1px solid #33a99f;
+  border-radius: 5px;
+  color: #64172d;
+}
+.primary-btn-outline:hover {
+  background-color: #33a99f;
+  color: #64172d;
+}
+
+.primary-btn {
+  background-color: #33a99f;
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  background-color: #257770;
+}
+
+.secondary-btn {
+  background-color: #03a9ca;
+  color: #ffffff;
+}
+
+.secondary-btn:hover {
+  background-color: #007991;
+}
+
+.bg-none {
+  background-color: inherit;
+}
+
+.main-header {
+  min-width: 440px;
+}
+
+.logo-banner {
+  width: 370px;
+}
+
+.xs-logo {
+  width: 50px;
+}
+
+.run-table thead th {
+  border-top: 0;
+}
