@@ -11,10 +11,8 @@ const getUserInfo = () => {
     switch(action.type) {
       case FETCH_USER_SUCCESS:
         return action.user;
-        // return { ...state, user: action.user };
       case FETCH_USER_ERROR:
         return {};
-        // return { ...state, user: {} };
       default:
         return state;
     }

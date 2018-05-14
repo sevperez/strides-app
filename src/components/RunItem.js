@@ -15,7 +15,7 @@ const RunItem = ({ data }) => {
       <td>{secondsToTimeString(paceSeconds)}</td>
       <td>
         { notes
-          ? <i className="fa fa-info-circle" aria-hidden="true"></i>
+          ? <i className="fa fa-info-circle dark-red" aria-hidden="true"></i>
           : <span></span>
         }
       </td>

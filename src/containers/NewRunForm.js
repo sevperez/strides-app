@@ -76,11 +76,14 @@ export class NewRunForm extends Component {
   render() {
     return (
       <form
-        className="col-12 p-3 top-border"
+        className="col-12 p-3 clearfix"
         id="newRun"
         onSubmit={this.handleSubmit}
       >
-        <h3>New Run</h3>
+        <h3>
+          <i className="fa fa-plus-circle mr-3 dark-red" aria-hidden="true"></i>
+          New Run
+        </h3>
         <div className="form-row">
           <div className="form-group col-4">
             <label htmlFor="date">
@@ -156,19 +159,21 @@ export class NewRunForm extends Component {
             </textarea>
           </div>
         </div>
-        <button
-          type="submit"
-          className="btn btn-sm btn-primary mr-2"
-        >
-          Submit
-        </button>
-        <button
-          type="reset"
-          className="btn btn-sm btn-info"
-          onClick={this.resetForm}
-        >
-          Reset
-        </button>
+        <div className="float-right">
+          <button
+            type="submit"
+            className="btn btn-sm primary-btn mr-2"
+          >
+            Submit
+          </button>
+          <button
+            type="reset"
+            className="btn btn-sm secondary-btn"
+            onClick={this.resetForm}
+          >
+            Reset
+          </button>
+        </div>
       </form>
     );
   }

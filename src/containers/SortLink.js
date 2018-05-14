@@ -31,7 +31,7 @@ export const SortLink = (props) => {
   return (
     <button
       type="button"
-      className="btn btn-link p-0 m-0 text-secondary"
+      className="btn btn-link p-0 m-0 text-dark font-weight-bold"
       onClick={(e) => {
           e.preventDefault();
           onSortClick(sort, attribute);

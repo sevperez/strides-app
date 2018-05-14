@@ -39,6 +39,24 @@ button.dark-red:hover {
   color: #64172d;
 }
 
+.primary-btn {
+  background-color: #33a99f;
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  background-color: #257770;
+}
+
+.secondary-btn {
+  background-color: #03a9ca;
+  color: #ffffff;
+}
+
+.secondary-btn:hover {
+  background-color: #007991;
+}
+
 .bg-none {
   background-color: inherit;
 }
@@ -49,4 +67,12 @@ button.dark-red:hover {
 
 .logo-banner {
   width: 370px;
+}
+
+.xs-logo {
+  width: 50px;
+}
+
+.run-table thead th {
+  border-top: 0;
 }

@@ -44,7 +44,7 @@ export class Login extends Component {
             onClick={loginWithGoogle}
           >
             <i className="fa fa-google mr-2" aria-hidden="true"></i>
-            Log in with Google
+            Sign in with Google
           </button>
         </div>
       </div>

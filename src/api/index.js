@@ -48,15 +48,6 @@ export const fetchRuns = (userId) => {
   });
 };
 
-// export const fetchRuns = (userId) =>
-//   delay(500).then(() => {
-//     if (fakeDatabase.users[userId]) {
-//       return fakeDatabase.users[userId].runs;
-//     } else {
-//       throw new Error(`Unknown userId: ${userId}`);
-//     }
-//   });
-
 export const addRun = (userId, run) =>
   delay(500).then(() => {
     const runId = v4();

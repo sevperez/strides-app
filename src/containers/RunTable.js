@@ -3,9 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import RunItem from "../components/RunItem";
 import SortLink from "./SortLink";
-import LoadingIndicator from "../components/LoadingIndicator";
 import FetchError from "../components/FetchError";
-import { getSortedRunIds, getIsFetching, getErrorMessage } from "../reducers";
+import { getSortedRunIds, getErrorMessage } from "../reducers";
 import * as actions from "../actions";
 
 const mapStateToProps = (state) => ({
@@ -14,31 +13,33 @@ const mapStateToProps = (state) => ({
   sort: state.sort,
   reverse: state.reverse,
   sortedRunIds: getSortedRunIds(state.runList, state.sort),
-  isFetching: getIsFetching(state.runList, "runs"),
   errorMessage: getErrorMessage(state.runList),
 });
 
 export class RunTable extends Component {
-  componentDidMount() {
-    this.fetchData();
-  }
-  
-  fetchData() {
-    const { fetchRuns, user } = this.props;
-    if (user.uid) {
-      fetchRuns(user.uid);
-    }
-  }
-  
   render() {
-    const { runs, reverse, isFetching, errorMessage } = this.props;
+    const { runs, reverse, errorMessage } = this.props;
     let { sortedRunIds } = this.props;
     if (reverse) {
       sortedRunIds = sortedRunIds.reverse();
     }
     
-    if (isFetching && !sortedRunIds.length) {
-      return <LoadingIndicator />;
+    const hasRuns = !!sortedRunIds.length;
+    
+    if (!hasRuns) {
+      return (
+        <div className="p-3 top-border bottom-border">
+          <h3 className="mb-3">
+            <img 
+              className="pr-1 xs-logo"
+              src="/images/shoe_logo_small.png"
+              alt="strides logo"
+            />
+            <span className="align-middle">My Runs</span>
+          </h3>
+          <p>No runs yet...</p>
+        </div>
+      );
     }
     
     if (errorMessage && !sortedRunIds.length) {
@@ -53,9 +54,16 @@ export class RunTable extends Component {
     
     return (
       <div className="p-3 top-border bottom-border">
-        <h3>My Runs</h3>
-        <table className="table table-hover table-sm">
-          <thead className="thead-light">
+        <h3 className="mb-3">
+          <img 
+            className="xs-logo"
+            src="/images/shoe_logo_small.png"
+            alt="strides logo"
+          />
+          <span className="align-middle">My Runs</span>
+        </h3>
+        <table className="table table-hover table-sm run-table">
+          <thead>
             <tr>
               <th scope="col">
                 <SortLink

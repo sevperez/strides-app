@@ -1,14 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getIsFetching } from "../reducers";
+import { fetchRuns } from "../actions";
 import RunTable from "./RunTable";
 import NewRunForm from "./NewRunForm";
 import Vitals from "./Vitals";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 const mapStateToProps = (state) => ({
   user: state.userInfo.user,
+  isFetching: getIsFetching(state.runList, "runs"),
 });
 
 export class App extends Component {
+  componentDidMount() {
+    this.fetchData();
+  }
+  
   componentWillMount() {
     if (this.props.user.email === undefined) {
       this.props.history.replace("/");
@@ -21,15 +29,31 @@ export class App extends Component {
     }
   }
   
+  fetchData() {
+    const { fetchRuns, user } = this.props;
+    if (user.uid) {
+      fetchRuns(user.uid);
+    }
+  }
+  
   render() {
+    const { isFetching } = this.props;
+    
     return (
-      <div className="container py-3">
-        <Vitals />
+      <div className="container pt-3 pb-5">
         <NewRunForm />
-        <RunTable />
+        { isFetching
+          ? <div className="top-border py-3">
+              <LoadingIndicator />
+            </div>
+          : <div>
+              <Vitals />
+              <RunTable />
+            </div>
+        }
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { fetchRuns })(App);
