@@ -19,3 +19,9 @@ dd p {
 .w-47-6 {
   width: 47.6%;
 }
+.footer {
+  background-color: #33a99f;
+  width: 100%;
+  min-height: 50px;
+  line-height: 50px;
+}

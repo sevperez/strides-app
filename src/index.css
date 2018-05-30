@@ -76,3 +76,30 @@ button.dark-red:hover {
 .run-table thead th {
   border-top: 0;
 }
+
+html,
+body,
+#root,
+.page-wrapper {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+.push {
+  height: 50px;
+}
+
+.page-footer {
+  background-color: #33a99f;
+  width: 100%;
+  min-height: 50px;
+  line-height: 50px;
+}
+
+.footer-logo {
+  height: 40px;
+}
