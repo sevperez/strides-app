@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getIsFetching } from "../reducers";
 import { fetchRuns } from "../actions";
 import RunTable from "./RunTable";
-import NewRunForm from "./NewRunForm";
 import Vitals from "./Vitals";
 import LoadingIndicator from "../components/LoadingIndicator";
 
@@ -41,9 +40,8 @@ export class App extends Component {
     
     return (
       <div className="container pt-3 pb-5">
-        <NewRunForm />
         { isFetching
-          ? <div className="top-border py-3">
+          ? <div className="py-3">
               <LoadingIndicator />
             </div>
           : <div>

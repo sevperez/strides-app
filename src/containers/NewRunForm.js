@@ -75,6 +75,7 @@ export class NewRunForm extends Component {
     
     this.resetForm();
     this.props.onRunSubmit(this.props.user.uid, runData);
+    this.props.handleClose();
   }
   
   render() {
@@ -84,10 +85,6 @@ export class NewRunForm extends Component {
         id="newRun"
         onSubmit={this.handleSubmit}
       >
-        <h3>
-          <i className="fa fa-plus-circle mr-3 dark-red" aria-hidden="true"></i>
-          New Run
-        </h3>
         <div className="form-row">
           <div className="form-group col-4">
             <label htmlFor="date">

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import RunItem from "../components/RunItem";
+import Modal from "../components/Modal";
+import NewRunForm from "./NewRunForm";
 import SortLink from "./SortLink";
 import FetchError from "../components/FetchError";
 import { getSortedRunIds, getErrorMessage } from "../reducers";
@@ -17,6 +19,24 @@ const mapStateToProps = (state) => ({
 });
 
 export class RunTable extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showNewRunModal: false,
+    };
+    
+    this.handleAddClick = this.handleAddClick.bind(this);
+    this.handleAddClose = this.handleAddClose.bind(this);
+  }
+  
+  handleAddClick() {
+    this.setState({ showNewRunModal: true });
+  }
+  
+  handleAddClose() {
+    this.setState({ showNewRunModal: false });
+  }
+  
   render() {
     const { runs, reverse, errorMessage } = this.props;
     let { sortedRunIds } = this.props;
@@ -28,7 +48,7 @@ export class RunTable extends Component {
     
     if (!hasRuns) {
       return (
-        <div className="p-3 top-border bottom-border">
+        <div className="p-3 top-border">
           <h3 className="mb-3">
             <img 
               className="pr-1 xs-logo"
@@ -53,7 +73,38 @@ export class RunTable extends Component {
     }
     
     return (
-      <div className="p-3 top-border bottom-border">
+      <div className="p-3 top-border clearfix">
+        { this.state.showNewRunModal &&
+          <Modal
+            titleElements={
+              <h3 className="my-0">
+                <i 
+                  className="fa fa-plus-circle mr-3 dark-red"
+                  aria-hidden="true">
+                </i>
+                New Run
+              </h3>
+            }
+            handleClose={this.handleAddClose}
+          >
+            <NewRunForm handleClose={this.handleAddClose} />
+          </Modal>
+        }
+        <button
+          type="button"
+          id="addRunBtn"
+          className="btn float-right p-0 transparentBtn"
+          onClick={this.handleAddClick}
+        >
+          <p className="lead m-0 p-0">
+            <i
+              className="fa fa-plus-circle mr-2 spinHover"
+              aria-hidden="true"
+            >
+            </i>
+            Add Run
+          </p>
+        </button>
         <h3 className="mb-3">
           <img 
             className="xs-logo"

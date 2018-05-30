@@ -34,7 +34,7 @@ export const Vitals = ({ runs }) => {
   }
   
   return (
-    <div className="p-3 top-border">
+    <div className="p-3">
       <h3 className="mb-2">
         <i className="fa fa-line-chart mr-3 dark-red" aria-hidden="true"></i>
         My Vitals
