@@ -2,12 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { getDateInfo, secondsToTimeString  } from "../helpers";
 
-const RunItem = ({ data }) => {
+const RunItem = ({ data, handleRunClick }) => {
   const { date, distance, seconds, notes } = data;
   const paceSeconds = seconds / distance;
   
   return (
-    <tr>
+    <tr onClick={handleRunClick} className="clickable">
       <td>{getDateInfo(date).dateString}</td>
       <td>{getDateInfo(date).dayString}</td>
       <td>{secondsToTimeString(seconds)}</td>
@@ -32,4 +32,5 @@ RunItem.propTypes = {
     seconds: PropTypes.number,
     notes: PropTypes.string,
   }).isRequired,
+  handleRunClick: PropTypes.func,
 };

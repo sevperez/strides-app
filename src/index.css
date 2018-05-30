@@ -77,6 +77,22 @@ button.dark-red:hover {
   border-top: 0;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
+.runInfoLogo {
+  height: 40px;
+}
+
+.runInfo {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.runInfo dt {
+  min-width: 100px;
+}
+
 html,
 body,
 #root,

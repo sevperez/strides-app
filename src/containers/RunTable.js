@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import RunItem from "../components/RunItem";
 import Modal from "../components/Modal";
 import NewRunForm from "./NewRunForm";
+import RunInfoModal from "../components/RunInfoModal";
 import SortLink from "./SortLink";
 import FetchError from "../components/FetchError";
 import { getSortedRunIds, getErrorMessage } from "../reducers";
@@ -23,10 +24,13 @@ export class RunTable extends Component {
     super(props);
     this.state = {
       showNewRunModal: false,
+      showRunInfo: null,
     };
     
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleAddClose = this.handleAddClose.bind(this);
+    this.handleRunClick = this.handleRunClick.bind(this);
+    this.handleRunClose = this.handleRunClose.bind(this);
   }
   
   handleAddClick() {
@@ -35,6 +39,14 @@ export class RunTable extends Component {
   
   handleAddClose() {
     this.setState({ showNewRunModal: false });
+  }
+  
+  handleRunClick(id) {
+    this.setState({ showRunInfo: id });
+  }
+  
+  handleRunClose() {
+    this.setState({ showRunInfo: null });
   }
   
   render() {
@@ -89,6 +101,12 @@ export class RunTable extends Component {
           >
             <NewRunForm handleClose={this.handleAddClose} />
           </Modal>
+        }
+        { this.state.showRunInfo &&
+          <RunInfoModal
+            data={runs[this.state.showRunInfo]}
+            handleClose={this.handleRunClose}
+          />
         }
         <button
           type="button"
@@ -165,7 +183,11 @@ export class RunTable extends Component {
           </thead>
           <tbody>
             {sortedRunIds.map(id => (
-              <RunItem key={id} data={runs[id]} />
+              <RunItem
+                key={id}
+                data={runs[id]}
+                handleRunClick={this.handleRunClick.bind(this, id)}
+              />
             ))}
           </tbody>
         </table>
