@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "./Modal";
 import { getDateInfo, secondsToTimeString  } from "../helpers";
 
-const RunInfoModal = ({ data, handleClose }) => {
+const RunInfoModal = ({ data, handleClose, handleDelete }) => {
   const { date, distance, seconds, notes } = data;
   const paceSeconds = seconds / distance;
   
@@ -73,7 +73,7 @@ const RunInfoModal = ({ data, handleClose }) => {
           </dd>
         </dl>
       </div>
-      <div className="mt-2">
+      <div className="mt-2 runNotes">
         <dl className="mb-0">
           <dt className="dark-red mb-1">
             <i className="fa fa-pencil mr-2" aria-hidden="true"></i>
@@ -83,6 +83,15 @@ const RunInfoModal = ({ data, handleClose }) => {
             {notes || "N/A"}
           </dd>
         </dl>
+      </div>
+      <div className="mt-2 clearfix">
+        <button
+          type="button"
+          className="btn btn-sm float-right danger-btn"
+          onClick={handleDelete}
+        >
+          <i className="fa fa-trash" aria-hidden="true"></i>
+        </button>
       </div>
     </Modal>
   );
@@ -97,4 +106,6 @@ RunInfoModal.propTypes = {
     seconds: PropTypes.number,
     notes: PropTypes.string,
   }),
+  handleClose: PropTypes.func,
+  handleDelete: PropTypes.func,
 };

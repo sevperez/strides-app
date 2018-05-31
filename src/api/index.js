@@ -32,3 +32,19 @@ export const addRun = (userId, run) => {
       });
   });
 };
+
+export const deleteRun = (userId, runId) => {
+  return new Promise(resolve => {
+    const userRunsRef = db.collection("users").doc(userId).collection("runs");
+    const deleteRunRef = userRunsRef.doc(runId);
+    
+    deleteRunRef.delete()
+      .then(() => {
+        resolve(runId); // return deleted runId
+      })
+      .catch((error) => {
+        console.log("Error deleting run: ", error);
+        throw new Error("Could not delete run");
+      });
+  });
+};

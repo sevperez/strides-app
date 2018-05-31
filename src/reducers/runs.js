@@ -5,7 +5,8 @@ import { FETCH_RUNS_REQUEST,
          FETCH_RUNS_SUCCESS,
          FETCH_RUNS_ERROR,
          ADD_RUN_SUCCESS,
-         FETCH_USER_SUCCESS } from "../actions/actionTypes";
+         FETCH_USER_SUCCESS,
+         DELETE_RUN_SUCCESS } from "../actions/actionTypes";
 
 const run = (state = {}, action) => {
   switch (action.type) {
@@ -26,6 +27,15 @@ const createRunList = () => {
           ...state,
           [action.response.runId]: run(state[action.response.runId], action),
         };
+      case DELETE_RUN_SUCCESS:
+        let newState = {};
+        Object.keys(state).forEach((key) => {
+          if (key !== action.response) {
+            newState[key] = state[key];
+          }
+        });
+        
+        return newState;
       default:
         return state;
     }

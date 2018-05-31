@@ -11,12 +11,21 @@ import { SET_SORT_ATTRIBUTE,
          FETCH_RUNS_ERROR,
          ADD_RUN_SUCCESS,
          FETCH_USER_SUCCESS,
-         FETCH_USER_ERROR } from "./actionTypes";
+         FETCH_USER_ERROR,
+         DELETE_RUN_SUCCESS } from "./actionTypes";
 
 export const addRun = (userId, run) => (dispatch) =>
   api.addRun(userId, run).then(response => {
     dispatch({
       type: ADD_RUN_SUCCESS,
+      response,
+    });
+  });
+
+export const deleteRun = (userId, runId) => (dispatch) =>
+  api.deleteRun(userId, runId).then(response => {
+    dispatch({
+      type: DELETE_RUN_SUCCESS,
       response,
     });
   });

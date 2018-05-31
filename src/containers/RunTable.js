@@ -30,6 +30,7 @@ export class RunTable extends Component {
     this.handleAddClose = this.handleAddClose.bind(this);
     this.handleRunClick = this.handleRunClick.bind(this);
     this.handleRunClose = this.handleRunClose.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   
   handleAddClick() {
@@ -46,6 +47,13 @@ export class RunTable extends Component {
   
   handleRunClose() {
     this.setState({ showRunInfo: null });
+  }
+  
+  handleDelete(runId) {
+    const userId = this.props.user.uid;
+
+    this.handleRunClose();
+    this.props.deleteRun(userId, runId);
   }
   
   render() {
@@ -102,6 +110,7 @@ export class RunTable extends Component {
           <RunInfoModal
             data={runs[this.state.showRunInfo]}
             handleClose={this.handleRunClose}
+            handleDelete={this.handleDelete.bind(this, this.state.showRunInfo)}
           />
         }
         <button

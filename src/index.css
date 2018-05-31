@@ -57,6 +57,15 @@ button.dark-red:hover {
   background-color: #007991;
 }
 
+.danger-btn {
+  color: #9a3b56;
+}
+
+.danger-btn:hover {
+  background-color: #9a3b56;
+  color: #ffffff;
+}
+
 .bg-none {
   background-color: inherit;
 }
@@ -85,7 +94,8 @@ button.dark-red:hover {
   height: 40px;
 }
 
-.runInfo {
+.runInfo,
+.runNotes {
   border-bottom: 1px solid #e9ecef;
 }
 
