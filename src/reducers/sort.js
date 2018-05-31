@@ -11,15 +11,21 @@ export const sort = (state = "date", action) => {
   }
 };
 
-export const reverse = (state, action) => {
+export const reverse = (state = true, action) => {
   switch (action.type) {
     case TOGGLE_REVERSE:
       if (state === undefined) {
-        return false;
+        return true;
       } else {
         return !state;
       }
+    case SET_SORT_ATTRIBUTE:
+      if (state === true) {
+        return false;
+      } else {
+        return state;
+      }
     default:
-      return false;
+      return state;
   }
 };
