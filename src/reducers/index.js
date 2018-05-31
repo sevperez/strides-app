@@ -14,8 +14,8 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-export const getSortedRunIds = (state, sortAttribute) =>
-  fromRuns.getSortedRunIds(state.runs, sortAttribute);
+export const getSortedRunIds = (state, sortAttribute, reverse) =>
+  fromRuns.getSortedRunIds(state.runs, sortAttribute, reverse);
 
 export const getIsFetching = (state, type) => {
   switch (type) {

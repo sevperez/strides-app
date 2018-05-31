@@ -64,7 +64,7 @@ const createRunList = () => {
 };
 export default createRunList;
 
-export const getSortedRunIds = (state = {}, sortAttribute) => {
+export const getSortedRunIds = (state = {}, sortAttribute, reverse) => {
   if (sortAttribute === "time") {
     sortAttribute = "seconds";
   }
@@ -111,7 +111,13 @@ export const getSortedRunIds = (state = {}, sortAttribute) => {
     }
   };
   
-  return Object.keys(state).sort(compare);
+  const runIds = Object.keys(state).sort(compare);
+  
+  if (reverse) {
+    return runIds.reverse();
+  } else {
+    return runIds;
+  }
 };
 
 export const getIsFetching = (state) => state.isFetching;

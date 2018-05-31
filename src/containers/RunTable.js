@@ -14,8 +14,7 @@ const mapStateToProps = (state) => ({
   user: state.userInfo.user,
   runs: state.runList.runs,
   sort: state.sort,
-  reverse: state.reverse,
-  sortedRunIds: getSortedRunIds(state.runList, state.sort),
+  sortedRunIds: getSortedRunIds(state.runList, state.sort, state.reverse),
   errorMessage: getErrorMessage(state.runList),
 });
 
@@ -50,11 +49,8 @@ export class RunTable extends Component {
   }
   
   render() {
-    const { runs, reverse, errorMessage } = this.props;
+    const { runs, errorMessage } = this.props;
     let { sortedRunIds } = this.props;
-    if (reverse) {
-      sortedRunIds = sortedRunIds.reverse();
-    }
     
     const hasRuns = !!sortedRunIds.length;
     

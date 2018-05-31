@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
         <div className="float-right">
           <img 
-            className="pr-2 footer-logo"
+            className="footer-logo"
             src="/images/shoe_logo_small.png"
             alt="strides logo"
           />
